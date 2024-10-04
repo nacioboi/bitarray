@@ -96,6 +96,10 @@ func (bits *BitArray) Get(n int) (int, error) {
 	return int((bits.bytes[n/8] >> byte(n%8)) & 1), nil
 }
 
+func (bits *BitArray) GetNoCheck(n int) int {
+	return int((bits.bytes[n/8] >> byte(n%8)) & 1)
+}
+
 // Put set the nth bit with 0/1, and return the old value of nth bit.
 // If index out of range [0, BitArray.Len()), return error.
 func (bits *BitArray) Put(n int, bit int) (int, error) {
